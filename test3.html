@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Nav-Bar mit Scrollspy</title>
+	<!-- Einbindung von Bootstrap-CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+	<!-- Einbindung von jQuery -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<!-- Einbindung von Popper.js -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+	<!-- Einbindung von Bootstrap-JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+	<!-- Aktivierung von Scrollspy -->
+	<script>
+		$(document).ready(function(){
+			// Aktivierung von Scrollspy
+			$('body').scrollspy({target: ".navbar", offset: 50});
+
+			// Smoothe Scroll-Funktion
+			$(".nav-link").on('click', function(event) {
+				// Verhinderung des Standardverhaltens von Links
+				event.preventDefault();
+
+				// Speichern des Ankerziels
+				var hash = this.hash;
+
+				// Animation der Smoothe Scroll-Funktion
+				$('html, body').animate({
+					scrollTop: $(hash).offset().top
+				}, 800, function(){
+					window.location.hash = hash;
+				});
+			});
+		});
+	</script>
+	<style>
+		/* CSS für die Nav-Bar */
+		.navbar {
+			background-color: #333;
+			position: fixed;
+			top: 0;
+			width: 100%;
+			z-index: 1;
+		}
+
+		.navbar a {
+			color: white;
+			font-size: 18px;
+			padding: 14px 16px;
+			text-decoration: none;
+			transition: all 0.3s ease;
+		}
+
+		.navbar a:hover {
+			background-color: #ddd;
+			color: black;
+		}
+
+		/* CSS für die aktive Nav-Bar-Element */
+		.active {
+			background-color: #4CAF50;
+		}
+	</style>
+</head>
+<body data-spy="scroll" data-target=".navbar" data-offset="50">
+
+	<!-- Nav-Bar -->
+	<nav class="navbar navbar-expand-sm">
+		<ul class="navbar-nav">
+			<li class="nav-item">
+				<a class="nav-link" href="#section1">Abschnitt 1</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link" href="#section2">Abschnitt 2</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link" href="#section3">Abschnitt 3</a>
+			</li>
+		</ul>
+	</nav>
+
+	<!-- Abschnitt 1 -->
+	<div id="section1" class="container-fluid">
+		<h1>Abschnitt 1</h1>
+		<p>Text für Abschnitt 1</p>
+	</div>
+
+	<!-- Abschnitt 2 -->
+	<div id="section2" class="container-fluid">
+		<h1>Abschnitt 2</h1>
+		<p>Text für Abschnitt 2</p>
+	</div>
+
+	<!-- Abschnitt 3 -->
+	<div id="section3" class="container
