@@ -1,5 +1,4 @@
 # la-fourier.github.io
-GH pages
+### GH pages
 
-
-daf
+https://github.com/la-fourier/la-fourier.github.io/actions/workflows/github-pages/badge.svg
