@@ -1,22 +1,28 @@
-const colorThemes = document.querySelector('[name="theme"]');
+const colorThemes = document.querySelectorAll('[name="theme"]');
 
-const storeTheme = function(theme) {
+// store theme
+const storeTheme = function (theme) {
   localStorage.setItem("theme", theme);
 };
 
-const retrieveTheme = function() {
+// set theme when visitor returns
+const setTheme = function () {
   const activeTheme = localStorage.getItem("theme");
   colorThemes.forEach((themeOption) => {
     if (themeOption.id === activeTheme) {
       themeOption.checked = true;
     }
   });
+  // fallback for no :has() support
+  document.documentElement.className = activeTheme;
 };
 
-colorThemes.forEach(themeOption => {
-  themeOption.addEventListener('clic', () => {
+colorThemes.forEach((themeOption) => {
+  themeOption.addEventListener("click", () => {
     storeTheme(themeOption.id);
+    // fallback for no :has() support
+    document.documentElement.className = themeOption.id;
   });
 });
 
-document.onload = retrieveTheme();
+document.onload = setTheme();
