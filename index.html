@@ -1,50 +1,59 @@
 <!DOCTYPE html>
-<html5>
-    <head>
-        <title>Johannes Loos</title>
-        <meta charset="utf8">
-    </head>
-    <body>
-<main>
-  <div class="wrapper">
-    <h1>Color theme's the easy way</h1>
-    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Obcaecati natus error quam suscipit architecto enim
-      nobis vero eaque. Repudiandae quisquam impedit fugiat neque delectus doloremque!</p>
-    <p>Rem neque inventore necessitatibus totam incidunt eius reprehenderit quis ipsam officia praesentium, quod vero
-      soluta maxime iure nobis dolorum a quibusdam officiis ratione debitis? Ipsam.</p>
-    <h2>Something interesting</h2>
-    <div class="auto-grid">
-      <div class="card">
-        <h3 class="card__title">A medium-length title</h3>
-        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Repellendus, atque.</p>
-      </div>
-      <div class="card">
-        <h3 class="card__title">A short title</h3>
-        <p>Voluptatem excepturi tempore quo recusandae sunt ullam earum optio cum?</p>
-      </div>
-      <div class="card">
-        <h3 class="card__title">A medium-length title</h3>
-        <p>Nam laudantium voluptas, tenetur repellendus numquam rem incidunt deleniti veritatis?</p>
-      </div>
-      <div class="card">
-        <h3 class="card__title">A much longer title than the others</h3>
-        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Repellendus, atque.</p>
-      </div>
-      <div class="card">
-        <h3 class="card__title">A medium-legth title</h3>
-        <p>Voluptatem excepturi tempore quo recusandae sunt ullam earum optio cum?</p>
-      </div>
-      <div class="card">
-        <h3 class="card__title">A short title</h3>
-        <p>Nam laudantium voluptas, tenetur repellendus numquam rem incidunt deleniti veritatis?</p>
-      </div>
-    </div>
-    <p>Rerum, neque! Consequuntur obcaecati beatae dolorum, fuga itaque iusto dicta et corporis facere ea
-      necessitatibus
-      odit cum, voluptates harum, dolore maiores aliquid distinctio repellendus nesciunt!</p>
-    <p>Unde dolor quod delectus obcaecati labore laboriosam optio sit eligendi. Excepturi explicabo quod obcaecati
-      pariatur error, in, accusantium eum omnis repellat qui, aliquid magnam odit?</p>
-  </div>
-</main>
-    </body>
+<html>
+<head>
+  <!--
+    If you are serving your web app in a path other than the root, change the
+    href value below to reflect the base path you are serving from.
+
+    The path provided below has to start and end with a slash "/" in order for
+    it to work correctly.
+
+    For more details:
+    * https://developer.mozilla.org/en-US/docs/Web/HTML/Element/base
+
+    This is a placeholder for base href that will be replaced by the value of
+    the `--base-href` argument provided to `flutter build`.
+  -->
+  <base href="/">
+
+  <meta charset="UTF-8">
+  <meta content="IE=Edge" http-equiv="X-UA-Compatible">
+  <meta name="description" content="A new Flutter project.">
+
+  <!-- iOS meta tags & icons -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="apple-mobile-web-app-title" content="homepage">
+  <link rel="apple-touch-icon" href="icons/Icon-192.png">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="favicon.png"/>
+
+  <title>homepage</title>
+  <link rel="manifest" href="manifest.json">
+
+  <script>
+    // The value below is injected by flutter build, do not touch.
+    const serviceWorkerVersion = "556357638";
+  </script>
+  <!-- This script adds the flutter initialization JS code -->
+  <script src="flutter.js" defer></script>
+</head>
+<body>
+  <script>
+    window.addEventListener('load', function(ev) {
+      // Download main.dart.js
+      _flutter.loader.loadEntrypoint({
+        serviceWorker: {
+          serviceWorkerVersion: serviceWorkerVersion,
+        },
+        onEntrypointLoaded: function(engineInitializer) {
+          engineInitializer.initializeEngine().then(function(appRunner) {
+            appRunner.runApp();
+          });
+        }
+      });
+    });
+  </script>
+</body>
 </html>
