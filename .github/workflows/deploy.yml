@@ -1,36 +1,51 @@
-name: Pages Deploy
+name: Deploy Flutter Web to Pages
 
 on:
   push:
     branches:
       - main
-  pull_request:
-    branches:
-      - main
-
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
+
     steps:
-#    - name: Check if commit message contains 'publish'
-#      run: echo ${{ github.event.head_commit.message }} | grep -q 'publish'
-#      continue-on-error: true
-
-    - name: Clone repository
+    - name: Checkout main branch
       uses: actions/checkout@v2
+      with:
+        ref: main
+        fetch-depth: 0
 
-    - name: Copy 'web' directory to 'gh-pages' branch
-      run: |
-        git checkout -b temp-branch
-        git subtree split --prefix web -b temp-web
-        git checkout gh-pages
-        git merge --ff-only temp-web
-        git branch -D temp-branch
-        git branch -D temp-web
-        git push origin gh-pages
+    - name: Set up Flutter
+      uses: subosito/flutter-action@v2
+      with:
+        flutter-version: 'stable'
 
-    - name: Clean up
+    - name: Flutter pub get
+      run: flutter pub get
+
+    - name: Build Flutter web
+      run: flutter build web --release
+
+    - name: Copy build output to deployment directory
       run: |
-        git checkout main
-        git branch -D gh-pages
+        rm -rf ../pages
+        mkdir ../pages
+        cp -r build/web/* ../pages/
+
+    - name: Checkout pages branch
+      run: |
+        git config --global user.name "github-actions[bot]"
+        git config --global user.email "github-actions[bot]@users.noreply.github.com"
+        git checkout --orphan pages
+
+    - name: Remove existing files in pages branch
+      run: |
+        git rm -rf .
+        cp -r ../pages/* .
+
+    - name: Commit and push changes
+      run: |
+        git add .
+        git commit -m "Deploy Flutter web to GitHub Pages"
+        git push origin pages --force
