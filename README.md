@@ -1,5 +1,3 @@
 # Johannes Loos
 
-..coming soon!
-
-Check out 
+Latest project [[here]].
